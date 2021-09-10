@@ -1,0 +1,63 @@
+-------- ARRETE D'ESSAYEZ DE DUMP POUR BYPASS MON ANTICHEAT TU REUSSIRA PAS ^^ --------
+_print = print
+SwLife.InternalToServer = SwLife.InternalToServer
+_NetworkExplodeVehicle = NetworkExplodeVehicle
+_AddExplosion = AddExplosion
+
+local isInVehicle = false
+local isEnteringVehicle = false
+local currentVehicle = 0
+local currentSeat = 0
+
+SwLife.newThread(function()
+	while true do
+		Citizen.Wait(0)
+		local ped = PlayerPedId()
+
+		if not isInVehicle and not IsPlayerDead(PlayerId()) then
+			if DoesEntityExist(GetVehiclePedIsTryingToEnter(ped)) and not isEnteringVehicle then
+				local vehicle = GetVehiclePedIsTryingToEnter(ped)
+				local seat = GetSeatPedIsTryingToEnter(ped)
+				local netId = VehToNet(vehicle)
+				isEnteringVehicle = true
+				SwLife.InternalToServer('baseevents:enteringVehicle', vehicle, seat, GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)), netId)
+			elseif not DoesEntityExist(GetVehiclePedIsTryingToEnter(ped)) and not IsPedInAnyVehicle(ped, true) and isEnteringVehicle then
+				SwLife.InternalToServer('baseevents:enteringAborted')
+				isEnteringVehicle = false
+			elseif IsPedInAnyVehicle(ped, false) then
+				isEnteringVehicle = false
+				isInVehicle = true
+				currentVehicle = GetVehiclePedIsUsing(ped)
+				currentSeat = GetPedVehicleSeat(ped)
+				local model = GetEntityModel(currentVehicle)
+				local name = GetDisplayNameFromVehicleModel()
+				local netId = VehToNet(currentVehicle)
+				SwLife.InternalToServer('baseevents:enteredVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)), netId)
+			end
+		elseif isInVehicle then
+			if not IsPedInAnyVehicle(ped, false) or IsPlayerDead(PlayerId()) then
+				-- bye, vehicle
+				local model = GetEntityModel(currentVehicle)
+				local name = GetDisplayNameFromVehicleModel()
+				local netId = VehToNet(currentVehicle)
+				SwLife.InternalToServer('baseevents:leftVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)), netId)
+				isInVehicle = false
+				currentVehicle = 0
+				currentSeat = 0
+			end
+		end
+		Citizen.Wait(500)
+	end
+end)
+
+function GetPedVehicleSeat(ped)
+	local vehicle = GetVehiclePedIsIn(ped, false)
+
+	for i = -2, GetVehicleMaxNumberOfPassengers(vehicle) do
+		if GetPedInVehicleSeat(vehicle, i) == ped then
+			return i
+		end
+	end
+
+	return -2
+end

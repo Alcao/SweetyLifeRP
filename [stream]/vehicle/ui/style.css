@@ -1,0 +1,165 @@
+@font-face {
+  font-family: 'Circular';
+  src: url("fonts/Circular-Bold.woff2") format("woff2"), url("fonts/Circular-Bold.woff") format("woff"), url("fonts/Circular-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circular';
+  src: url("fonts/Circular-Book.woff2") format("woff2"), url("fonts/Circular-Book.woff") format("woff"), url("fonts/Circular-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+* {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'Circular', sans-serif;
+  font-weight: normal;
+  overflow: hidden;
+  height: 100%; }
+
+.test {
+  position: absolute;
+  bottom: 0;
+  right: 0; 
+}
+
+.imgcash { float:right; margin:73px 20px 83px 30px; }
+
+.hud {
+  position: absolute;
+  bottom: 300px;
+  left: 88px;
+  width: 160px; 
+}
+
+  .hud .profile {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    width: 80px;
+    height: 82px;
+    border-radius: 0%;
+    overflow: hidden; 
+  }
+
+  .hud .container {
+    
+    position: absolute;
+    left: 40px;
+    top: 39px;
+    width: 400px;
+    height: 80px;
+    padding: 2px 20px 12px 76px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: rgba(32, 24, 32, 0);
+    -webkit-backdrop-filter: blur(4px);
+    transform: rotate(-90deg);
+
+    
+    border-radius: 10px; 
+    
+  }
+
+    .hud .container .type {
+      width: 60px;
+      height: 9px;
+      margin: 8px 0; 
+    }
+
+      .hud .container .type .svg {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -4px;
+        width: 0px;
+        text-align: center; 
+      }
+	
+      .hud .container .type .progress {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -4px;
+        margin-left: 8px;
+        width: calc(170% - 5px);
+        height: 8px;
+		    opacity: 1.0;
+        border-radius: 10px; 
+        
+        
+      }
+
+		.thirst {
+            background-color: rgba(54, 54, 54, 0.253);
+            border: 2px solid rgba(54, 54, 54, 0.253);
+          }
+
+        .hunger {
+            background-color: rgba(54, 54, 54, 0.253);
+            border: 2px solid rgba(54, 54, 54, 0.253);
+          }
+
+          .armor {
+            background-color: rgba();
+          }
+			
+        .hud .container .type .progress div {
+          display: block;
+          height:100%;
+		  width: 100%;
+		  opacity: 0.8;
+          border-radius: 10px; 
+          
+        }
+
+          .thirst div {
+            background-color:#2AD2FC;
+          }
+
+          .hunger div {
+            background-color: #2AFC46;
+          }
+
+          .armor div {
+            background-color:;
+          }
+
+		  
+  .hud #hour {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    width: 170px;
+    right: 0;
+    top: -15px; 
+  }
+
+  .hud .notification {
+    display: none;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    line-height: 21px;
+    background-color: #EE5253;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    z-index: 2;
+    border-radius: 100%;
+    top: -7px;
+    left: 0; 
+  }
+
+  .hud .icons {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: -16px; }

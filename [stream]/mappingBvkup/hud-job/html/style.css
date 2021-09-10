@@ -1,0 +1,63 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+* {padding: 0; margin: 0; box-sizing: border-box; font-family: 'Bebas Neue', cursive;  font-size: 30px}
+body{
+	overflow:hidden;
+}
+
+.playerStats{
+    position: absolute;
+    left: 350px; /* Default: 350px */
+    bottom: 20px; /* Default: 20px */
+    /*bottom: 20px; /* Default: 20px */
+    left: 92.0%; /* (18.2% Right Side of Map) | (82.0% Right Side of Screen) | (2.7% Above Map)  */
+    /*left: 82.0%; /* (18.2% Right Side of Map) | (82.0% Right Side of Screen) | (2.7% Above Map)  */
+    bottom: 84%; /* (1.85% Default-Fix for all 16:9 resolutions) | (21.0% Above Map) */
+}
+
+.carStats{
+	position: absolute;
+	right: 50px;
+	bottom: 50px;
+	display: none;
+}
+
+.statcash{
+	color: #fff;
+	width: 220px;
+	height: 30px;
+	position: relative;
+	margin-left: -133px;
+	bottom: 5px;
+	text-align: right;
+}
+
+.statbank{
+	color: #fff;
+	width: 220px;
+	height: 30px;
+	position: relative;
+	margin-left: -133px;
+	bottom: 2px;
+	text-align: right;
+}
+
+.statjob{
+	color: #fff;
+	width: 220px;
+	height: 30px;
+	position: relative;
+	margin-left: -87px;
+	bottom: 1px;
+	text-align: right;
+}
+
+.imgbank { float:right; margin:106px 20px 116px 30px; }
+.imgmoney { float:right; margin:75px -75px 16px 50px; }
+
+.stat span{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: -10px;
+}
+
