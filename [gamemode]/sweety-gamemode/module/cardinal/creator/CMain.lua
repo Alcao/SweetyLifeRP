@@ -305,44 +305,48 @@ function OpenCreatorMenu()
                     RageUI.ButtonWithStyle("Prénom", "Veuillez entrer votre prénom.", {RightLabel = sDataIdentity.surname}, true,function(h,a,s)
                         if s then
                             local firstname = sKeyboardInput("ex : Mike", "", 20)   
-                            if firstname ~= nil then
+                            if firstname ~= "" then
                                 SwLife.InternalToServer('::{razzway.xyz}::esx_identity:SetFirstName', GetPlayerServerId(PlayerId()), firstname)
                                 sDataIdentity.surname = firstname
                             else
                                 ESX.ShowNotification('~r~Vous devez entrer le Prénom')
+                                firstname = ""
                             end
                         end
                     end)
                     RageUI.ButtonWithStyle("Nom", "Veuillez entrer votre nom.", {RightLabel = sDataIdentity.name}, true,function(h,a,s)
                         if s then
                             local lastname = sKeyboardInput("ex : Anderson", "", 20)   
-                            if lastname ~= nil then
+                            if lastname ~= "" then
                                 SwLife.InternalToServer('::{razzway.xyz}::esx_identity:SetLastName', GetPlayerServerId(PlayerId()), lastname)
                                 sDataIdentity.name = lastname
                             else
                                 ESX.ShowNotification('~r~Vous devez entrer votre nom de famille')
+                                lastname = ""
                             end
                         end
                     end)
                     RageUI.ButtonWithStyle("Taille", "Veuillez entrer votre taille.", {RightLabel = sDataIdentity.height}, true,function(h,a,s)
                         if s then
                             local height = sKeyboardInput("ex : 180", "", 20)   
-                            if height ~= nil then
+                            if height ~= "" then
                                 SwLife.InternalToServer('::{razzway.xyz}::esx_identity:SetHeight', GetPlayerServerId(PlayerId()), height)
                                 sDataIdentity.height = height
                             else
                                 ESX.ShowNotification('~r~Vous devez entrer votre taille')
+                                height = ""
                             end
                         end
                     end)
                     RageUI.ButtonWithStyle("Date de naissance", "Veuillez entrer votre date de naissance.", {RightLabel = sDataIdentity.birthday}, true,function(h,a,s)
                         if s then
                             local dateofbirth = sKeyboardInput("ex : 01/01/1997", "", 20)   
-                            if dateofbirth ~= nil then
+                            if dateofbirth ~= "" then
                                 SwLife.InternalToServer('::{razzway.xyz}::esx_identity:SetDOB', GetPlayerServerId(PlayerId()), dateofbirth)
                                 sDataIdentity.birthday = dateofbirth
                             else
                                 ESX.ShowNotification('~r~Vous devez entrer la Date de Naissance')
+                                dateofbirth = ""
                             end
                         end
                     end)
