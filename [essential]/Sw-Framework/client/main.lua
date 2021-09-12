@@ -395,6 +395,21 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+  while true do
+
+    Citizen.Wait(10)
+
+    local playerId = PlayerId()
+
+    if GetPlayerWantedLevel(playerId) ~= 0 then
+      SetPlayerWantedLevel(playerId, 0, false)
+      SetPlayerWantedLevelNow(playerId, false)
+    end
+
+  end
+end)
+
+Citizen.CreateThread(function()
 	while true do
 		while not ESX.PlayerLoaded do
 			Citizen.Wait(10)
