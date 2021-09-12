@@ -103,13 +103,22 @@ function DrawMissionText(msg, time)
     DrawSubtitleTimed(time and math.ceil(time) or 0, true)
 end
 
+local Razzway = {}
+
 local waitenterspawn = 500
 
 RMenu.Add('rz-spawn', 'main', RageUI.CreateMenu("SweetyLife", "~b~Bienvenue parmi nous."))
 RMenu:Get('rz-spawn', 'main').EnableMouse = false
-RMenu:Get('rz-spawn', 'main').Closed = function() Razzway.Visible = false FreezeEntityPosition(GetPlayerPed(-1), false) end
-
-Razzway = {}
+RMenu:Get('rz-spawn', 'main').Closed = function()
+    Razzway.Visible = false
+    ESX.TriggerServerCallback('::{razzway.xyz}::esx_skin:getPlayerSkin', function(skin, jobSkin)
+        if skin ~= nil then
+            TriggerEvent('::{razzway.xyz}::skinchanger:loadSkin', skin)
+            spawncinematiqueplayer()
+            RazzwaySpawnMenu()
+        end
+    end)
+end
 
 function RazzwaySpawnMenu()
 
